@@ -1,10 +1,10 @@
 site_name: Além da Sintaxe
-site_url: https://mydomain.org/mysite
+site_url: https://abelsalim.github.io/alem_da_sintaxe
 
 theme:
   name: material
-  logo: assets/2.jpg
-  favicon: assets/2.jpg
+  logo: assets/1.png
+  favicon: assets/2.png
   features:
     - navigation.tabs
     - navigation.instant
