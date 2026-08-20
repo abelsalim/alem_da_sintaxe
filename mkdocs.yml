@@ -1,0 +1,76 @@
+site_name: Além da Sintaxe
+site_url: https://mydomain.org/mysite
+
+theme:
+  name: material
+  logo: assets/2.jpg
+  favicon: assets/2.jpg
+  features:
+    - navigation.tabs
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.instant.preview
+    - navigation.expand
+    - navigation.path
+    - navigation.top
+
+    - toc.follow
+
+    - search.highlight
+    - search.share
+
+    - header.autohide
+  palette:
+
+    # --- Bloco 1: Modo Claro ---
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: black
+      toggle:
+        icon: material/lightbulb
+        name: Switch to dark mode
+
+    # --- Bloco 2: Modo Escuro ---
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to light mode
+
+nav:
+  - Sobre: index.md
+  - Python:
+    - Dominando o Modelo de Dados: python/Dominando o Modelo de Dados.md
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/abel-salim-3562532b8/
+    - icon: fontawesome/brands/github
+      link: https://www.github.com/abelsalim/
+  consent:
+    title: Uso de Cookies
+    description: >-
+      Utilizamos cookies para lembrar as suas preferências e analisar como interage 
+      com a nossa documentação. Ao dar o seu consentimento, ajuda-nos a entender 
+      o que funciona e a criar conteúdos cada vez melhores.
+
+plugins:
+  - search
+  - social
+  - offline
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+
+repo_name: abelsalim/alem_da_sintaxe
+repo_url: https://github.com/abelsalim/alem_da_sintaxe
+
+copyright: Copyright &copy; 2026 Além da Sintaxe

@@ -1,0 +1,19 @@
+[project]
+name = "alem_da_sintaxe"
+version = "0.1.0"
+description = "Minhas notas pessoais"
+readme = "README.md"
+authors = [
+    { name = "abelsalim" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "mkdocs-material[imaging]>=9.7.7",
+]
+
+[project.scripts]
+alem_da_sintaxe = "alem_da_sintaxe:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
