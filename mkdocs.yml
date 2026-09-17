@@ -42,6 +42,7 @@ nav:
   - Sobre: index.md
   - Python:
     - Dominando o Modelo de Dados: python/Dominando o Modelo de Dados.md
+    - Sequências Contêiner x Sequências Planas: python/Sequências Contêiner x Sequências Planas.md
 
 extra:
   generator: false
