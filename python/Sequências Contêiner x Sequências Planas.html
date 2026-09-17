@@ -1,0 +1,1221 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abelsalim.github.io/alem_da_sintaxe/python/Sequ%C3%AAncias%20Cont%C3%AAiner%20x%20Sequ%C3%AAncias%20Planas.html">
+      
+      
+        <link rel="prev" href="Dominando%20o%20Modelo%20de%20Dados.html">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/2.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Sequências Contêiner x Sequências Planas - Além da Sintaxe</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#anatomia-da-memoria-sequencias-conteiner-vs-sequencias-planas" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="Além da Sintaxe" class="md-header__button md-logo" aria-label="Além da Sintaxe" data-md-component="logo">
+      
+  <img src="../assets/1.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Além da Sintaxe
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Sequências Contêiner x Sequências Planas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/abelsalim/alem_da_sintaxe" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    abelsalim/alem_da_sintaxe
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Sobre
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="Dominando%20o%20Modelo%20de%20Dados.html" class="md-tabs__link">
+          
+  
+  
+  Python
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Além da Sintaxe" class="md-nav__button md-logo" aria-label="Além da Sintaxe" data-md-component="logo">
+      
+  <img src="../assets/1.png" alt="logo">
+
+    </a>
+    Além da Sintaxe
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/abelsalim/alem_da_sintaxe" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    abelsalim/alem_da_sintaxe
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sobre
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Dominando%20o%20Modelo%20de%20Dados.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dominando o Modelo de Dados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sequências Contêiner x Sequências Planas
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="Sequ%C3%AAncias%20Cont%C3%AAiner%20x%20Sequ%C3%AAncias%20Planas.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sequências Contêiner x Sequências Planas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sequencias-conteiner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sequências Contêiner
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequencias-planas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sequências Planas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mas-o-que-e-pyobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mas, o que é PyObject?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#por-que-list-e-flexivel-mas-pesada-e-array-e-rigida-mas-leve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que list é flexível, mas "pesada", e array é rígida, mas "leve"?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Por que list é flexível, mas &#34;pesada&#34;, e array é rígida, mas &#34;leve&#34;?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-flexibilidade-por-que-e-flexivel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Flexibilidade (Por que é flexível?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-peso-por-que-e-pesada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O "Peso" (Por que é pesada?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#por-que-o-array-e-rigido-mas-leve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que o array é rígido, mas "leve"?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Por que o array é rígido, mas &#34;leve&#34;?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-rigidez-por-que-e-rigido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Rigidez (Por que é rígido?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-leveza-por-que-e-leve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A "Leveza" (Por que é leve?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#impacto-na-performance-o-papel-do-cache-da-cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Impacto na Performance: O Papel do Cache da CPU
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Impacto na Performance: O Papel do Cache da CPU">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-conceito-de-cache-e-localidade-espacial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O Conceito de Cache e Localidade Espacial
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-problema-da-sequencia-conteiner-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O Problema da Sequência Contêiner (list)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-vantagem-da-sequencia-plana-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Vantagem da Sequência Plana (array)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sequencias-conteiner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sequências Contêiner
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequencias-planas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sequências Planas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mas-o-que-e-pyobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mas, o que é PyObject?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#por-que-list-e-flexivel-mas-pesada-e-array-e-rigida-mas-leve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que list é flexível, mas "pesada", e array é rígida, mas "leve"?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Por que list é flexível, mas &#34;pesada&#34;, e array é rígida, mas &#34;leve&#34;?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-flexibilidade-por-que-e-flexivel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Flexibilidade (Por que é flexível?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-peso-por-que-e-pesada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O "Peso" (Por que é pesada?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#por-que-o-array-e-rigido-mas-leve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que o array é rígido, mas "leve"?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Por que o array é rígido, mas &#34;leve&#34;?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-rigidez-por-que-e-rigido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Rigidez (Por que é rígido?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-leveza-por-que-e-leve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A "Leveza" (Por que é leve?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#impacto-na-performance-o-papel-do-cache-da-cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Impacto na Performance: O Papel do Cache da CPU
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Impacto na Performance: O Papel do Cache da CPU">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-conceito-de-cache-e-localidade-espacial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O Conceito de Cache e Localidade Espacial
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-problema-da-sequencia-conteiner-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O Problema da Sequência Contêiner (list)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-vantagem-da-sequencia-plana-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Vantagem da Sequência Plana (array)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../index.html" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Sobre
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="Dominando%20o%20Modelo%20de%20Dados.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Python
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="anatomia-da-memoria-sequencias-conteiner-vs-sequencias-planas">Anatomia da Memória: Sequências Contêiner vs. Sequências Planas</h1>
+<hr />
+<p>No Python, chamamos de sequências objetos que permitem acesso por índice e possuem um comprimento definido. Mas, embora todas as sequências pareçam iguais por fora, por dentro elas podem ser organizadas de duas formas completamente diferentes em memória.</p>
+<h2 id="sequencias-conteiner">Sequências Contêiner</h2>
+<blockquote>
+<p><strong>Para entender:</strong> Ao entrarmos em uma biblioteca tradicional e organizada, temos geralmente um(a) recepcionista ou bibliotecário(a). Este, por sua vez, está ao seu dispor. Portanto, uma simples pergunta pode ser o suficiente para encontrar o livro desejado.</p>
+<p>Isso é possível devido ao sistema de arquivamento, seja ele físico ou virtual. Ao questionar a existência do livro "A" em estoque, a bibliotecária irá utilizar o sistema para <strong>localizar seu endereço físico</strong>, caso exista no estabelecimento.</p>
+</blockquote>
+<p>Trazendo isso para Python, é notável que abrir um interpretador Python, gerar uma lista e agregar seu valor em uma variável, estamos alocando esse objeto na memória. Portanto, ao executar essa lista, o Python (retratado como a bibliotecária) se encarregará de buscar seu objeto em memória (sistema de arquivamento).</p>
+<p>O resultado dessa consulta é o mesmo da bibliotecária, ou seja, <strong>metadados que apontem para localização real dos objetos contidos na sequência</strong>.</p>
+<p>Com as localizações em mãos, o Python se encarrega de catalogar todos os objetos em todos os ponteiros da memória e retornar.</p>
+<p><strong>Exemplo para Sequências Contêiner:</strong>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Lista: Flexível, mas guarda referências</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">minha_lista</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="s2">"Python"</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">]</span> <span class="c1"># Tipos mistos = OK!</span>
+</span></code></pre></div></p>
+<h2 id="sequencias-planas">Sequências Planas</h2>
+<blockquote>
+<p><strong>Para entender:</strong> Imagine uma caixa de ovos. Nela, não existe recepcionista, sistema de busca ou bilhetes com endereços. O ovo está <strong>fisicamente</strong> encaixado em um espaço reservado para ele.</p>
+<p>Se você deseja o segundo ovo, você não precisa de um mapa para encontrá-lo; você simplesmente move a mão para a segunda cavidade da caixa e o pega. O objeto é o próprio conteúdo daquela posição, e ele está grudado ao objeto anterior.</p>
+</blockquote>
+<p>Este conceito é o que chamamos no Python de <strong>Sequências Planas</strong>. Diferente das listas comuns, elas não guardam "endereços" (referências) para onde os dados estão; elas armazenam o <strong>valor bruto</strong> do dado, um ao lado do outro, em um bloco único e contíguo de memória.</p>
+<p><strong>Exemplo para Sequências Planas:</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">array</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># Array: Rígido, guarda valores brutos</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># 'i' indica que a "caixa" só aceita inteiros</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">meu_array</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">'i'</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>
+</span></code></pre></div>
+<h2 id="mas-o-que-e-pyobject">Mas, o que é <code>PyObject</code>?</h2>
+<blockquote>
+<p>Antes de prosseguir com o tema, é viável entender do que se trata <code>PyObject</code>.</p>
+</blockquote>
+<p>No CPython (a implementação padrão do Python), absolutamente tudo é um objeto. Para que isso seja possível, cada objeto herda uma estrutura básica chamada <code>PyObject</code>.</p>
+<p>Imagine que o <code>PyObject</code> é uma "etiqueta" que o Python cola em qualquer dado. Essa etiqueta contém duas informações essenciais:</p>
+<ol>
+<li>
+<p><strong>Contador de Referências (<code>ob_refcnt</code>):</strong> Um número que diz quantas variáveis ou listas estão apontando para aquele objeto no momento.</p>
+</li>
+<li>
+<p><strong>Tipo do Objeto (<code>ob_type</code>):</strong> Um ponteiro que diz se aquele objeto é um inteiro, uma string, uma lista, etc.</p>
+</li>
+</ol>
+<p><strong>Por que isso importa para as sequências?</strong></p>
+<ul>
+<li>
+<p><strong>Na <code>list</code> (Contêiner):</strong> Cada elemento é um ponteiro para um <code>PyObject</code>. Ou seja, para guardar o número 10, o Python guarda a etiqueta (tipo + contador) + o valor. Isso gera o "peso".</p>
+</li>
+<li>
+<p><strong>Na <code>array.array</code> (Plana):</strong> O Python descarta as etiquetas individuais. Ele guarda apenas o valor bruto. O "tipo" é guardado uma única vez no cabeçalho do array, e não em cada elemento.</p>
+</li>
+</ul>
+<h2 id="por-que-list-e-flexivel-mas-pesada-e-array-e-rigida-mas-leve">Por que <code>list</code> é flexível, mas "pesada", e <code>array</code> é rígida, mas "leve"?</h2>
+<p>A <code>list</code> é uma <strong>sequência contêiner</strong>. Ela não guarda os valores, ela guarda <strong>referências</strong> (ponteiros).</p>
+<h3 id="a-flexibilidade-por-que-e-flexivel">A Flexibilidade (Por que é flexível?)</h3>
+<p>Como a lista guarda apenas endereços de memória (ponteiros), ela não se importa com o que está no destino.</p>
+<ul>
+<li>
+<p>O ponteiro para um número inteiro tem 8 bytes.</p>
+</li>
+<li>
+<p>O ponteiro para uma string gigante tem 8 bytes.</p>
+</li>
+<li>
+<p>O ponteiro para um objeto complexo de uma classe customizada tem 8 bytes.</p>
+</li>
+</ul>
+<p>Como todos os "bilhetes de endereço" têm o mesmo tamanho, o Python pode colocar qualquer tipo de objeto na mesma lista. Isso é a <strong>heterogeneidade</strong>.</p>
+<h3 id="o-peso-por-que-e-pesada">O "Peso" (Por que é pesada?)</h3>
+<p>A <code>list</code> é pesada por dois motivos:</p>
+<ol>
+<li>
+<p><strong>Custo do Ponteiro:</strong> Para cada elemento, você gasta 8 bytes apenas para guardar o endereço, além do espaço do objeto real.</p>
+</li>
+<li>
+<p><strong>Overhead do PyObject:</strong> No Python, tudo é um objeto. Um número inteiro simples em uma list não ocupa apenas 4 bytes (como no C). Ele é um PyObject, que contém:</p>
+<ul>
+<li>
+<p>Um contador de referências (para o Garbage Collector).</p>
+</li>
+<li>
+<p>Uma indicação do tipo do objeto.</p>
+</li>
+<li>
+<p>O valor real.</p>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>O Garbage Collector (GC) é o mecanismo automático que libera a memória de objetos que não estão mais sendo usados, para que o computador não fique sem RAM.</p>
+</blockquote>
+<p><strong>Resultado:</strong> Um único inteiro em uma <code>list</code> pode ocupar 28 bytes ou mais, enquanto o valor bruto do número precisaria de apenas 4 ou 8 bytes.</p>
+<h2 id="por-que-o-array-e-rigido-mas-leve">Por que o array é rígido, mas "leve"?</h2>
+<p>O array.array é uma <strong>sequência plana</strong>. Ele armazena os <strong>valores brutos</strong>, exatamente como as linguagens de baixo nível (C/C++).</p>
+<h3 id="a-rigidez-por-que-e-rigido">A Rigidez (Por que é rígido?)</h3>
+<p>Para ser "plano", o Python precisa saber exatamente quantos bytes cada elemento ocupa para conseguir calcular a posição do próximo.</p>
+<ul>
+<li>
+<p>Se você define um array de inteiros de 4 bytes ('i'), cada "caixa" na memória tem exatamente 4 bytes.</p>
+</li>
+<li>
+<p>Se você tentasse colocar uma string ali, ela não caberia, pois strings têm tamanhos variáveis.</p>
+</li>
+</ul>
+<p>Por isso, o array exige que todos os elementos sejam do mesmo tipo. Isso é a <strong>homogeneidade</strong>.</p>
+<h3 id="a-leveza-por-que-e-leve">A "Leveza" (Por que é leve?)</h3>
+<p>O array é leve porque ele <strong>elimina toda a burocracia</strong>:</p>
+<ol>
+<li>
+<p><strong>Sem Ponteiros:</strong> Ele não guarda endereços; ele guarda o valor. Você economiza os 8 bytes do ponteiro por elemento.</p>
+</li>
+<li>
+<p><strong>Sem PyObject por elemento:</strong> Ele não armazena o contador de referências nem o tipo para cada item. Ele armazena o tipo <strong>uma única vez</strong> no cabeçalho do array. Todos os itens lá dentro são apenas números brutos.</p>
+</li>
+</ol>
+<p><strong>Resultado:</strong> Milhões de números em um array.array ocupam uma fração do espaço que ocupariam em uma list.</p>
+<h2 id="impacto-na-performance-o-papel-do-cache-da-cpu">Impacto na Performance: O Papel do Cache da CPU</h2>
+<p>Você deve estar se perguntando: "Ok, a sequência plana gasta menos memória, mas isso realmente deixa o programa mais rápido?". A resposta é <strong>sim</strong>, e o motivo está em como o processador do seu computador trabalha.</p>
+<h3 id="o-conceito-de-cache-e-localidade-espacial">O Conceito de Cache e Localidade Espacial</h3>
+<p>O processador (CPU) é ordens de magnitude mais rápido que a memória RAM. Para não ficar esperando a RAM enviar os dados, a CPU possui uma memória interna minúscula, mas ultra veloz, chamada <strong>Cache</strong>.</p>
+<p>Quando a CPU busca um dado na RAM, ela não pega apenas aquele único valor. Ela assume que, se você precisou do dado na posição <code>X</code>, provavelmente precisará do dado na posição <code>X+1</code> logo em seguida. Por isso, ela traz para o cache um <strong>bloco inteiro de memória</strong> ao redor daquele dado. Isso é chamado de <strong>Localidade Espacial</strong>.</p>
+<h3 id="o-problema-da-sequencia-conteiner-list">O Problema da Sequência Contêiner (list)</h3>
+<p>Lembra da nossa analogia da bibliotecária? Na <code>list</code>, a "bibliotecária" nos dá um endereço.</p>
+<ol>
+<li>
+<p>A CPU busca o endereço na lista (está no cache).</p>
+</li>
+<li>
+<p>Mas o objeto real (o valor) está em um lugar completamente diferente e distante da memória RAM.</p>
+</li>
+<li>
+<p>A CPU precisa fazer uma nova viagem até a RAM para buscar o objeto.</p>
+</li>
+</ol>
+<p>Como os objetos de uma lista podem estar espalhados por qualquer lugar da memória, a CPU sofre o que chamamos de <strong>Cache Miss</strong> (Falha de Cache): ela traz um bloco de memória para o cache, mas os próximos objetos da lista não estão naquele bloco. Ela precisa "viajar" para a RAM a cada novo elemento.</p>
+<h3 id="a-vantagem-da-sequencia-plana-array">A Vantagem da Sequência Plana (array)</h3>
+<p>Na sequência plana, os dados estão grudados uns nos outros (contíguos).</p>
+<ol>
+<li>
+<p>Quando a CPU busca o primeiro elemento do array, ela traz para o cache aquele elemento <strong>e os próximos vários elementos que estão ao lado dele</strong>.</p>
+</li>
+<li>
+<p>Quando o código pede o segundo elemento, a CPU não vai até a RAM; ela olha para o lado e o dado já está lá no cache.</p>
+</li>
+</ol>
+<p>Isso é um <strong>Cache Hit</strong> (Acerto de Cache). O processador consegue ler milhares de elementos em sequência sem nunca precisar "sair" do cache para visitar a RAM.</p>
+<p>Em resumo:</p>
+<ul>
+<li>
+<p>Sequência Contêiner: Causa muitos "saltos" na memória -&gt; Mais Cache Misses -&gt; <strong>Menor performance</strong>.</p>
+</li>
+<li>
+<p>Sequência Plana: Leitura linear e contígua -&gt; Mais Cache Hits -&gt; <strong>Performance máxima</strong>.</p>
+</li>
+</ul>
+<p><em>Em uma breve comparação, é posível imaginar que enquanto a <code>list</code> é como viajar por várias cidades diferentes para visitar cada amigo, o <code>array</code> é como visitar todos os seus amigos que moram no mesmo prédio: você faz uma única viagem e resolve tudo no mesmo lugar.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Além da Sintaxe
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/abel-salim-3562532b8/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.github.com/abelsalim/" target="_blank" rel="noopener" title="www.github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+  
+
+
+<h4>Uso de Cookies</h4>
+<p>Utilizamos cookies para lembrar as suas preferências e analisar como interage  com a nossa documentação. Ao dar o seu consentimento, ajuda-nos a entender  o que funciona e a criar conteúdos cada vez melhores.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+    
+      
+    
+    
+      
+        
+  
+  
+    
+    
+  
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="github" checked>
+      <span class="task-list-indicator"></span>
+      GitHub
+    </label>
+  </li>
+
+      
+    
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.instant", "navigation.instant.progress", "navigation.instant.preview", "navigation.expand", "navigation.path", "navigation.top", "toc.follow", "search.highlight", "search.share", "header.autohide"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
